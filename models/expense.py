@@ -9,3 +9,4 @@ class Expense:
     quantity: float
     odometer_reading: float
     date: str
+    is_refuel_indicator_on: bool

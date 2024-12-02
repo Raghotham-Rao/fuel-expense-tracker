@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from utils.db_connection import get_data, get_connection
 from utils.components import *
-from models.expense import Expense
 import plotly.express as px
 from datetime import datetime, timedelta
 import numpy as np
@@ -37,8 +36,8 @@ with st.container():
         st.plotly_chart(monthly_stats_fig)
 
     with columns[1]:
-        display_metrics_box(df['amount'].sum(), "Total Expenditure till date", unit='&#8377;', prefix_unit=True)
+        display_metrics_box(df['amount'].sum().astype(int), "Total Expenditure till date", unit='&#8377;', prefix_unit=True)
         display_metrics_box(df.shape[0], "No. of times Refueled")
         display_metrics_box(df[pd.to_datetime(df['date']).dt.month == datetime.now().month]['amount'].sum(), "Current Month", unit='&#8377;', prefix_unit=True)
         display_metrics_box(mileage_df['mileage'].mean().round(2), "Average Mileage", unit='<span style="font-size: 14px">kmpl</span>')
-        display_metrics_box(mileage_df['days_to_refill'].mean(), "Average Days for refuel", unit='<span style="font-size: 14px">days</span>')
+        display_metrics_box(mileage_df['days_to_refill'].mean().round(2), "Average Days for refuel", unit='<span style="font-size: 14px">days</span>')

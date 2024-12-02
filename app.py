@@ -16,7 +16,7 @@ if "fuel_data" not in st.session_state:
 conn = get_connection()
 data = get_data(conn)
 
-df = pd.DataFrame(list(data.values()))
+df = pd.DataFrame(data).sort_values("date")
 
 df["refuel_qty_till_date"] = df["quantity"].cumsum()
 mileage_df = df[df["is_refuel_indicator_on"]].copy()

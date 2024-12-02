@@ -1,2 +1,4 @@
 .firebase/
 */__pycache__/*
+secrets.toml
+create_secrets_toml.py

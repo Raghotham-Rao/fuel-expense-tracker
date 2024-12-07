@@ -41,3 +41,4 @@ with st.container():
         display_metrics_box(df[pd.to_datetime(df['date']).dt.month == datetime.now().month]['amount'].sum(), "Current Month", unit='&#8377;', prefix_unit=True)
         display_metrics_box(mileage_df['mileage'].mean().round(2), "Average Mileage", unit='<span style="font-size: 14px">kmpl</span>')
         display_metrics_box(mileage_df['days_to_refill'].mean().round(2), "Average Days for refuel", unit='<span style="font-size: 14px">days</span>')
+        display_metrics_box(df["odometer_reading"].max().astype(int), "Last Refueled at", unit='<span style="font-size: 14px"> km</span>', heading_level=1)

@@ -4,13 +4,13 @@ import numpy as np
 import plotly.express as px
 
 
-def display_metrics_box(value, title, unit="", prefix_unit=False):
+def display_metrics_box(value, title, unit="", prefix_unit=False, heading_level=1):
     value = f'{value:,}' if not isinstance(value, str) else value
     st.markdown(
         f'''
         <div style="text-align: center; border-radius: 5px">
             <p style="font-family: Monospace; font-size: 12px">{title}</p>
-            <h1 style="padding-top: 5px">{unit if prefix_unit else ""}{value}{unit if not prefix_unit else ""}</h1>
+            <h{heading_level} style="padding-top: 5px">{unit if prefix_unit else ""}{value}{unit if not prefix_unit else ""}</h{heading_level}>
         </div>
         ''', 
         unsafe_allow_html=True
